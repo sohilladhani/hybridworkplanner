@@ -1,7 +1,7 @@
 {
   "name": "Hybrid Work Planner",
   "short_name": "HW Planner",
-  "start_url": "index.html",
+  "start_url": "/hybridworkplanner/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4F46E5",

@@ -1,10 +1,10 @@
 const CACHE_NAME = 'hybrid-work-planner-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/script.js',
-  '/icon-192.svg',
-  '/icon-512.svg',
+  'hybridworkplanner/',
+  'hybridworkplanner/index.html',
+  'hybridworkplanner/script.js',
+  'hybridworkplanner/icon-192.svg',
+  'hybridworkplanner/icon-512.svg',
   'https://cdn.tailwindcss.com',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
