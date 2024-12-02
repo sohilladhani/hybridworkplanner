@@ -32,9 +32,12 @@
                         Hybrid Work Planner
                     </span>
                 </h1>
-                <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 transition-colors duration-200">
-                    <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
-                    <i class="fas fa-moon text-yellow-300 hidden dark:block"></i>
+                <button id="darkModeToggle" class="relative inline-flex items-center h-6 rounded-full w-11 bg-gray-200 dark:bg-gray-700 transition-colors duration-200 focus:outline-none">
+                    <span class="sr-only">Toggle dark mode</span>
+                    <span class="transform transition-transform duration-200 translate-x-1 dark:translate-x-6 inline-block w-4 h-4 transform rounded-full bg-white shadow flex items-center justify-center">
+                        <i class="fas fa-sun text-yellow-500 text-xs dark:hidden"></i>
+                        <i class="fas fa-moon text-yellow-300 text-xs hidden dark:block"></i>
+                    </span>
                 </button>
             </div>
 
