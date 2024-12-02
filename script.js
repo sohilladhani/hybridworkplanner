@@ -42,6 +42,10 @@ quarterStartInput.addEventListener('change', handleQuarterStartChange);
 requiredDaysInput.addEventListener('change', handleRequiredDaysChange);
 prevMonthBtn.addEventListener('click', () => navigateMonth(-1));
 nextMonthBtn.addEventListener('click', () => navigateMonth(1));
+window.addEventListener('resize', () => {
+    renderCalendar();
+});
+
 
 function toggleDarkMode() {
     document.documentElement.classList.toggle('dark');
@@ -251,8 +255,9 @@ function renderCalendar() {
     const days = getCalendarDays(year, month);
 
     const officeDays = calculateMonthlyOfficeDays(year, month);
+    const monthFormat = window.innerWidth < 768 ? 'short' : 'long';
     currentMonthElement.textContent = `${new Date(year, month, 1).toLocaleDateString('default', {
-        month: 'long',
+        month: monthFormat,
         year: 'numeric'
     })} (Office Days: ${officeDays})`;
 
