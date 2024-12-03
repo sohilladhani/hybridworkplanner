@@ -128,11 +128,13 @@ function handleQuarterStartChange(event) {
     switchToQuarterIfNeeded();
     renderCalendar();
     updateSummary();
+    saveCalendarData();
 }
 
 function handleRequiredDaysChange(event) {
     requiredDays = parseInt(event.target.value);
     updateSummary();
+    saveCalendarData();
 }
 
 function navigateMonth(delta) {
@@ -185,6 +187,7 @@ function setDayType(date, type) {
     const dateString = date.toISOString().split('T')[0];
     calendarData[dateString] = type;
     updateSummary();
+    saveCalendarData();
 }
 
 function cycleDayType(date) {
@@ -325,6 +328,37 @@ function updateSummary() {
     holidayDaysElement.textContent = holidayDays;
     remainingDaysElement.textContent = Math.max(0, requiredDays - totalWorkingDays);
 }
+
+
+
+function saveCalendarData() {
+    localStorage.setItem('calendarData', JSON.stringify(calendarData));
+    localStorage.setItem('quarterStartDate', quarterStartDate ? quarterStartDate.toISOString() : null);
+    localStorage.setItem('requiredDays', requiredDays.toString());
+}
+
+function loadCalendarData() {
+    const savedCalendarData = localStorage.getItem('calendarData');
+    const savedQuarterStart = localStorage.getItem('quarterStartDate');
+    const savedRequiredDays = localStorage.getItem('requiredDays');
+
+    if (savedCalendarData) {
+        calendarData = JSON.parse(savedCalendarData);
+    }
+    if (savedQuarterStart && savedQuarterStart !== 'null') {
+        quarterStartDate = new Date(savedQuarterStart);
+        quarterStartInput.value = savedQuarterStart.split('T')[0];
+        currentDate = new Date(quarterStartDate);
+    }
+    if (savedRequiredDays) {
+        requiredDays = parseInt(savedRequiredDays);
+        requiredDaysInput.value = requiredDays;
+    }
+}
+
+
 // Initial setup
+loadCalendarData();
 initializeTheme();
 renderCalendar();
+updateSummary();
